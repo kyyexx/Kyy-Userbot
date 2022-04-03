@@ -569,13 +569,13 @@ with bot:
 
         main_help_button = [
             [
-                Button.inline("Modules 📚", data="reopen"),
-                Button.inline("VC Menu 📎", data="kyy_inline"),
+                Button.inline("ᴍᴏᴅᴜʟᴇs 📚", data="reopen"),
+                Button.inline("ᴠᴄ ᴍᴇɴᴜ 📎", data="kyy_inline"),
             ],
             [
-                Button.url("Settings ⚙️", f"t.me/{botusername}"),
+                Button.url("sᴇᴛᴛɪɴɢs ⚙️", f"t.me/{botusername}"),
             ],
-            [Button.inline("Kembali", data="close")],
+            [Button.inline("ʙᴀᴄᴋ", data="close")],
         ]
 
         @tgbot.on(events.NewMessage(incoming=True,
@@ -818,12 +818,12 @@ Voice chat group menu untuk {owner}
 """,
                     buttons=[
                         [
-                            Button.inline("Vc Plugin ⚙️",
+                            Button.inline("ᴠᴄ ᴘʟᴜɢɪɴ ⚙️",
                                           data="vcplugin"),
-                            Button.inline("Vc Tools ⚙️",
+                            Button.inline("ᴠᴄ ᴛᴏᴏʟs ⚙️",
                                            data="vctools")],
                         [custom.Button.inline(
-                            "Kembali", data="gcback")],
+                            "ʙᴀᴄᴋ", data="gcback")],
                     ]
                 )
             else:
@@ -870,7 +870,7 @@ Voice chat group menu untuk {owner}
                     text,
                     file=kyylogo,
                     link_preview=True,
-                    buttons=[Button.inline("Kembali", data="kyy_inline")])
+                    buttons=[Button.inline("ʙᴀᴄᴋ", data="kyy_inline")])
             else:
                 reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
@@ -908,7 +908,7 @@ Voice chat group menu untuk {owner}
                     text,
                     file=kyylogo,
                     link_preview=True,
-                    buttons=[Button.inline("Kembali", data="kyy_inline")])
+                    buttons=[Button.inline("ʙᴀᴄᴋ", data="kyy_inline")])
             else:
                 reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
@@ -917,9 +917,9 @@ Voice chat group menu untuk {owner}
         @tgbot.on(events.CallbackQuery(data=b"close"))
         async def close(event):
             buttons = [
-                (custom.Button.inline("Main Menu", data="gcback"),),
+                (custom.Button.inline("ᴍᴀɪɴ ᴍᴇɴᴜ", data="gcback"),),
             ]
-            await event.edit("**Menu Ditutup!**", file=kyylogo, buttons=buttons)
+            await event.edit("**ᴍᴇɴᴜ ᴅɪᴛᴜᴛᴜᴘ!**", file=kyylogo, buttons=buttons)
 
         @tgbot.on(
             events.callbackquery.CallbackQuery(
@@ -965,7 +965,7 @@ Voice chat group menu untuk {owner}
                     )
                 )
                 await event.edit(
-                    reply_pop_up_alert, buttons=[Button.inline("Kembali", data="reopen")]
+                    reply_pop_up_alert, buttons=[Button.inline("ʙᴀᴄᴋ", data="reopen")]
                 )
 
             else:
