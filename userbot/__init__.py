@@ -812,7 +812,7 @@ with bot:
 
         @tgbot.on(events.CallbackQuery(data=b"kyy_inline"))
         async def about(event):
-            if event.query.user_id == uid:
+            if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 await event.edit(f"""
 Voice chat group menu untuk {owner}
 """,
@@ -840,28 +840,37 @@ Voice chat group menu untuk {owner}
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 text = (
                     f"""
-  Command : {cmd}play <Judul Lagu/Link YT>
+✘ **Commands available in vcplugin** ✘ 
+
+  **Command :** `{cmd}play` <Judul Lagu/Link YT>
   • : Untuk Memutar Lagu di voice chat group dengan akun kamu
-  Command : {cmd}vplay <Judul Video/Link YT>
+
+  **Command :** `{cmd}vplay` <Judul Video/Link YT>
   • : Untuk Memutar Video di voice chat group dengan akun kamu
-  Command : {cmd}end
+
+  **Command :** `{cmd}end`
   • : Untuk Memberhentikan video/lagu yang sedang putar di voice chat group
-  Command : {cmd}skip
+
+  **Command :** `{cmd}skip`
   • : Untuk Melewati video/lagu yang sedang di putar
-  Command : {cmd}pause
+
+  **Command :** `{cmd}pause`
   • : Untuk memberhentikan video/lagu yang sedang diputar
-  Command : {cmd}resume
+
+  **Command :** `{cmd}resume`
   • : Untuk melanjutkan pemutaran video/lagu yang sedang diputar
-  Command : {cmd}volume 1-200
+
+  **Command :** `{cmd}volume` 1-200
   • : Untuk mengubah volume (Membutuhkan Hak admin)
-  Command : {cmd}playlist
+
+  **Command :** `{cmd}playlist`
   • : Untuk menampilkan daftar putar Lagu/Video
 """)
                 await event.edit(
                     text,
                     file=kyylogo,
                     link_preview=True,
-                    buttons=[Button.inline("Kembali", data="gcback")])
+                    buttons=[Button.inline("Kembali", data="kyy_inline")])
             else:
                 reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
@@ -875,17 +884,24 @@ Voice chat group menu untuk {owner}
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 text = (
                     f"""
-  Command : {cmd}startvc        
-  • : Untuk Memulai voice chat group        
-  Command : {cmd}stopvc        
-  • : Untuk Memberhentikan voice chat group        
-  Command : {cmd}vctitle <title vcg>        
-  • : Untuk Mengubah title/judul voice chat group        
-  Command : {cmd}vcinvite        
-  • : Mengundang Member group ke voice chat group        
-  Command : {cmd}joinvc        
-  • : Melakukan Fake OS   
-  Command : {cmd}leavevc        
+✘ **Commands available in vctools** ✘ 
+
+  **Command :** `{cmd}startvc`        
+  • : Untuk Memulai voice chat group
+        
+  **Command :** `{cmd}stopvc`        
+  • : Untuk Memberhentikan voice chat group
+        
+  **Command :** `{cmd}vctitle` <title vcg>        
+  • : Untuk Mengubah title/judul voice chat group
+       
+  **Command :** `{cmd}vcinvite`        
+  • : Mengundang Member group ke voice chat group
+        
+  **Command :** `{cmd}joinvc`        
+  • : Melakukan Fake OS
+   
+  **Command :** `{cmd}leavevc`        
   • : Memberhentikan Fake OS
 """)
                 await event.edit(
