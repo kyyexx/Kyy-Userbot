@@ -842,29 +842,29 @@ Voice chat group menu untuk {owner}
                     f"""
 ✘ **Commands available in vcplugin** ✘ 
 
-  **Command :** `{cmd}play` <Judul Lagu/Link YT>
-  • : Untuk Memutar Lagu di voice chat group dengan akun kamu
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}play` <Judul Lagu/Link YT>
+  ↳ : Untuk Memutar Lagu di voice chat group dengan akun kamu
 
-  **Command :** `{cmd}vplay` <Judul Video/Link YT>
-  • : Untuk Memutar Video di voice chat group dengan akun kamu
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}vplay` <Judul Video/Link YT>
+  ↳ : Untuk Memutar Video di voice chat group dengan akun kamu
 
-  **Command :** `{cmd}end`
-  • : Untuk Memberhentikan video/lagu yang sedang putar di voice chat group
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}end`
+  ↳ : Untuk Memberhentikan video/lagu yang sedang putar di voice chat group
 
-  **Command :** `{cmd}skip`
-  • : Untuk Melewati video/lagu yang sedang di putar
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}skip`
+  ↳ : Untuk Melewati video/lagu yang sedang di putar
 
-  **Command :** `{cmd}pause`
-  • : Untuk memberhentikan video/lagu yang sedang diputar
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}pause`
+  ↳ : Untuk memberhentikan video/lagu yang sedang diputar
 
-  **Command :** `{cmd}resume`
-  • : Untuk melanjutkan pemutaran video/lagu yang sedang diputar
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}resume`
+  ↳ : Untuk melanjutkan pemutaran video/lagu yang sedang diputar
 
-  **Command :** `{cmd}volume` 1-200
-  • : Untuk mengubah volume (Membutuhkan Hak admin)
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}volume` 1-200
+  ↳ : Untuk mengubah volume (Membutuhkan Hak admin)
 
-  **Command :** `{cmd}playlist`
-  • : Untuk menampilkan daftar putar Lagu/Video
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}playlist`
+  ↳ : Untuk menampilkan daftar putar Lagu/Video
 """)
                 await event.edit(
                     text,
@@ -886,23 +886,23 @@ Voice chat group menu untuk {owner}
                     f"""
 ✘ **Commands available in vctools** ✘ 
 
-  **Command :** `{cmd}startvc`        
-  • : Untuk Memulai voice chat group
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}startvc`        
+  ↳ : Untuk Memulai voice chat group
         
-  **Command :** `{cmd}stopvc`        
-  • : Untuk Memberhentikan voice chat group
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}stopvc`        
+  ↳ : Untuk Memberhentikan voice chat group
         
-  **Command :** `{cmd}vctitle` <title vcg>        
-  • : Untuk Mengubah title/judul voice chat group
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}vctitle` <title vcg>        
+  ↳ : Untuk Mengubah title/judul voice chat group
        
-  **Command :** `{cmd}vcinvite`        
-  • : Mengundang Member group ke voice chat group
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}vcinvite`        
+  ↳ : Mengundang Member group ke voice chat group
         
-  **Command :** `{cmd}joinvc`        
-  • : Melakukan Fake OS
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}joinvc`        
+  ↳ : Melakukan Fake voice chat group
    
-  **Command :** `{cmd}leavevc`        
-  • : Memberhentikan Fake OS
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}leavevc`        
+  ↳ : Memberhentikan Fake voice chat group
 """)
                 await event.edit(
                     text,
