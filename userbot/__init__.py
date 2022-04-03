@@ -651,27 +651,6 @@ with bot:
 
         @tgbot.on(
             events.callbackquery.CallbackQuery(  # pylint:disable=E0602
-                data=re.compile(rb"get_back")
-            )
-        )
-        async def on_plug_in_callback_query_handler(event):
-            if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
-                current_page_number = int(looters)
-                buttons = paginate_help(
-                    current_page_number, dugmeler, "helpme")
-                text = f"**✨ ҡʏʏ-υѕєявσт ɪɴʟɪɴᴇ ᴍᴇɴᴜ ✨**\n\n✣ **ᴏᴡɴᴇʀ** [{user.first_name}](tg://user?id={user.id})\n✣ **ᴊᴜᴍʟᴀʜ** `{len(dugmeler)}` **Modules**"
-                await event.edit(
-                    text,
-                    file=kyylogo,
-                    buttons=buttons,
-                    link_preview=False,
-                )
-            else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
-                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
-        @tgbot.on(
-            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
                 data=re.compile(rb"reopen")
             )
         )
@@ -831,31 +810,52 @@ with bot:
                     link_preview=True,
                     buttons=main_help_button)
 
+        @tgbot.on(events.CallbackQuery(data=b"kyy_inline"))
+        async def about(event):
+            if event.query.user_id == uid:
+                await event.edit(f"""
+Voice chat group menu untuk {owner}
+""",
+                    buttons=[
+                        [
+                            Button.inline("Vc Plugin ⚙️",
+                                          data="vcplugin"),
+                            Button.inline("Vc Tools ⚙️",
+                                           data="vctools")],
+                        [custom.Button.inline(
+                            "Kembali", data="gcback")],
+                    ]
+                )
+            else:
+                reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
+
         @tgbot.on(
             events.callbackquery.CallbackQuery(  # pylint:disable=E0602
-                data=re.compile(rb"kyy_inline")
+                data=re.compile(rb"vcplugin")
             )
         )
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 text = (
                     f"""
-  •  Syntax : {cmd}play <Judul Lagu/Link YT>
-  •  Function : Untuk Memutar Lagu di voice chat group dengan akun kamu
-  •  Syntax : {cmd}vplay <Judul Video/Link YT>
-  •  Function : Untuk Memutar Video di voice chat group dengan akun kamu
-  •  Syntax : {cmd}end
-  •  Function : Untuk Memberhentikan video/lagu yang sedang putar di voice chat group
-  •  Syntax : {cmd}skip
-  •  Function : Untuk Melewati video/lagu yang sedang di putar
-  •  Syntax : {cmd}pause
-  •  Function : Untuk memberhentikan video/lagu yang sedang diputar
-  •  Syntax : {cmd}resume
-  •  Function : Untuk melanjutkan pemutaran video/lagu yang sedang diputar
-  •  Syntax : {cmd}volume 1-200
-  •  Function : Untuk mengubah volume (Membutuhkan Hak admin)
-  •  Syntax : {cmd}playlist
-  •  Function : Untuk menampilkan daftar putar Lagu/Video
+  Command : {cmd}play <Judul Lagu/Link YT>
+  • : Untuk Memutar Lagu di voice chat group dengan akun kamu
+  Command : {cmd}vplay <Judul Video/Link YT>
+  • : Untuk Memutar Video di voice chat group dengan akun kamu
+  Command : {cmd}end
+  • : Untuk Memberhentikan video/lagu yang sedang putar di voice chat group
+  Command : {cmd}skip
+  • : Untuk Melewati video/lagu yang sedang di putar
+  Command : {cmd}pause
+  • : Untuk memberhentikan video/lagu yang sedang diputar
+  Command : {cmd}resume
+  • : Untuk melanjutkan pemutaran video/lagu yang sedang diputar
+  Command : {cmd}volume 1-200
+  • : Untuk mengubah volume (Membutuhkan Hak admin)
+  Command : {cmd}playlist
+  • : Untuk menampilkan daftar putar Lagu/Video
 """)
                 await event.edit(
                     text,
@@ -865,6 +865,38 @@ with bot:
             else:
                 reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+                data=re.compile(rb"vctools")
+            )
+        )
+        async def on_plug_in_callback_query_handler(event):
+            if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
+                text = (
+                    f"""
+  Command : {cmd}startvc        
+  • : Untuk Memulai voice chat group        
+  Command : {cmd}stopvc        
+  • : Untuk Memberhentikan voice chat group        
+  Command : {cmd}vctitle <title vcg>        
+  • : Untuk Mengubah title/judul voice chat group        
+  Command : {cmd}vcinvite        
+  • : Mengundang Member group ke voice chat group        
+  Command : {cmd}joinvc        
+  • : Melakukan Fake OS   
+  Command : {cmd}leavevc        
+  • : Memberhentikan Fake OS
+""")
+                await event.edit(
+                    text,
+                    file=kyylogo,
+                    link_preview=True,
+                    buttons=[Button.inline("Kembali", data="kyy_inline")])
+            else:
+                reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
 
         @tgbot.on(events.CallbackQuery(data=b"close"))
         async def close(event):
@@ -917,7 +949,7 @@ with bot:
                     )
                 )
                 await event.edit(
-                    reply_pop_up_alert, buttons=[Button.inline("Kembali", data="get_back")]
+                    reply_pop_up_alert, buttons=[Button.inline("Kembali", data="reopen")]
                 )
 
             else:
