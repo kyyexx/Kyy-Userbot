@@ -14,8 +14,7 @@ from userbot import (
     BOT_TOKEN,
     BOT_VER,
     LOGS,
-    LOOPS
-    bot,
+    LOOP,
     call_py,
 )
 from userbot.clients import kyy_userbot_on, multikyy
