@@ -32,11 +32,6 @@ try:
     git()
     LOGS.info(f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/NastySupportt")
     LOGS.info(f"✨Kyy-Userbot✨ ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
-except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
-    pass
-except BaseException as e:
-    LOGS.info(str(e), exc_info=True)
-    sys.exit(1)
 
 
 bot.loop.run_until_complete(kyy_userbot_on())
@@ -48,7 +43,4 @@ idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
-    try:
-        bot.run_until_disconnected()
-    except ConnectionError:
-        pass
+    bot.run_until_disconnected()
