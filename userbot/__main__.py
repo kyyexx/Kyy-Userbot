@@ -7,35 +7,36 @@
 
 import sys
 from importlib import import_module
-from platform import python_version
-
-from pytgcalls import __version__ as pytgcalls
 from pytgcalls import idle
-from telethon import version
 
-from userbot import BOT_VER as ubotversion
-from userbot.core.git import git
-from userbot.clients import kyy_userbot_on, multikyy
 from userbot import (
-    BOTLOG_CHATID,
+    BOTLOG_CHATID
     BOT_TOKEN,
+    BOT_VER,
     LOGS,
-    LOOP,
+    LOOPS
+    bot,
+    call_py,
 )
+from userbot.clients import kyy_userbot_on, multikyy
+from userbot.core.git import git
 from userbot.modules import ALL_MODULES
 from userbot.utils import autobot, autopilot
 
 try:
     for module_name in ALL_MODULES:
         imported_module = import_module(f"userbot.modules.{module_name}")
+    bot.start()
+    call_py.start()
+    user = bot.get_me()
     client = multikyy()
     total = 5 - client
     git()
-    LOGS.info(f"Total Clients = {total} User")
-    LOGS.info(f"Python Version - {python_version()}")
-    LOGS.info(f"Telethon Version - {version.__version__}")
-    LOGS.info(f"PyTgCalls Version - {pytgcalls.__version__}")
-    LOGS.info(f"Kyy-Userbot Version - {ubotversion} [✨ BERHASIL DIAKTIFKAN! ✨]")
+    
+LOGS.info(
+    f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/NastySupportt")
+LOGS.info(
+    f"✨Kyy-Userbot✨ ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
 except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
     pass
 except BaseException as e:
