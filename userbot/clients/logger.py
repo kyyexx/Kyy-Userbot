@@ -68,7 +68,7 @@ async def kyy_userbot_on():
             await checking(KYY2)
             await asyncio.sleep(3)
             if BOTLOG_CHATID != 0:
-                await MAN2.send_message(
+                await KYY2.send_message(
                     BOTLOG_CHATID,
                     MSG_ON.format(version, branch, cmd),
                 )
@@ -79,7 +79,7 @@ async def kyy_userbot_on():
             await checking(KYY3)
             await asyncio.sleep(3)
             if BOTLOG_CHATID != 0:
-                await MAN3.send_message(
+                await KYY3.send_message(
                     BOTLOG_CHATID,
                     MSG_ON.format(version, branch, cmd),
                 )
@@ -90,7 +90,7 @@ async def kyy_userbot_on():
             await checking(KYY4)
             await asyncio.sleep(3)
             if BOTLOG_CHATID != 0:
-                await MAN4.send_message(
+                await KYY4.send_message(
                     BOTLOG_CHATID,
                     MSG_ON.format(version, branch, cmd),
                 )
@@ -101,7 +101,7 @@ async def kyy_userbot_on():
             await checking(KYY5)
             await asyncio.sleep(3)
             if BOTLOG_CHATID != 0:
-                await MAN5.send_message(
+                await KYY5.send_message(
                     BOTLOG_CHATID,
                     MSG_ON.format(version, branch, cmd),
                 )
