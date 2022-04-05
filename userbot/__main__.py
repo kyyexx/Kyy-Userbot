@@ -14,7 +14,7 @@ from userbot import (
     BOT_TOKEN,
     BOT_VER,
     LOGS,
-    call_py,
+    LOOP,
     bot,
 )
 from userbot.clients import kyy_userbot_on, multikyy
@@ -25,22 +25,29 @@ from userbot.utils import autobot, autopilot
 try:
     for module_name in ALL_MODULES:
         imported_module = import_module("userbot.modules." + module_name)
-    call_py.start()
     user = bot.get_me()
     client = multikyy()
     total = 5 - client
     git()
     LOGS.info(f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/NastySupportt")
     LOGS.info(f"✨Kyy-Userbot✨ ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
+except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
+    pass
+except BaseException as e:
+    LOGS.info(str(e), exc_info=True)
+    sys.exit(1)
 
 
-bot.loop.run_until_complete(kyy_userbot_on())
+LOOP.run_until_complete(kyy_userbot_on())
 if not BOTLOG_CHATID:
-    bot.loop.run_until_complete(autopilot())
+    LOOP.run_until_complete(autopilot())
 if not BOT_TOKEN:
-    bot.loop.run_until_complete(autobot())
+    LOOP.run_until_complete(autobot())
 idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
-    bot.run_until_disconnected()
+    try:
+        bot.run_until_disconnected()
+    except ConnectionError:
+        pass
