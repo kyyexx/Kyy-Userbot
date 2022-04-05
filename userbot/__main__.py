@@ -24,7 +24,7 @@ from userbot.utils import autobot, autopilot
 
 try:
     for module_name in ALL_MODULES:
-        imported_module = import_module(f"userbot.modules.{module_name}")
+        imported_module = import_module("userbot.modules." + module_name)
     bot.start()
     call_py.start()
     user = bot.get_me()
