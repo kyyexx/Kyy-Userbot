@@ -268,46 +268,9 @@ def remove_plugin(shortname):
 
 # bye Ice-Userbot
 
-async def create_supergroup(group_name, client, botusername, descript):
-    try:
-        result = await client(
-            functions.channels.CreateChannelRequest(
-                title=group_name,
-                about=descript,
-                megagroup=True,
-            )
-        )
-        created_chat_id = result.chats[0].id
-        result = await client(
-            functions.messages.ExportChatInviteRequest(
-                peer=created_chat_id,
-            )
-        )
-        await client(
-            functions.channels.InviteToChannelRequest(
-                channel=created_chat_id,
-                users=[botusername],
-            )
-        )
-    except Exception as e:
-        return "error", str(e)
-    if not str(created_chat_id).startswith("-100"):
-        created_chat_id = int("-100" + str(created_chat_id))
-    return result, created_chat_id
-
-
 async def autopilot():
-    if BOTLOG_CHATID and str(BOTLOG_CHATID).startswith("-100"):
-        return
-    k = []  # To Refresh private ids
-    async for x in bot.iter_dialogs():
-        k.append(x.id)
-    if BOTLOG_CHATID:
-        try:
-            await bot.get_entity(int("BOTLOG_CHATID"))
-            return
-        except BaseException:
-            del heroku_var["BOTLOG_CHATID"]
+    LOGS.info("TUNGGU SEBENTAR. SEDANG MEMBUAT GROUP LOG USERBOT UNTUK ANDA")
+    desc = "Group Log untuk Man-UserBot.\n\nHARAP JANGAN KELUAR DARI GROUP INI.\n\n✨ Powered By ~ @Lunatic0de ✨"
     try:
         r = await bot(
             CreateChannelRequest(
@@ -331,13 +294,3 @@ async def autopilot():
         heroku_var["BOTLOG_CHATID"] = "-100" + str(chat_id)
     else:
         heroku_var["BOTLOG_CHATID"] = str(chat_id)
-    rights = ChatAdminRights(
-        add_admins=True,
-        invite_users=True,
-        change_info=True,
-        ban_users=True,
-        delete_messages=True,
-        pin_messages=True,
-        anonymous=False,
-        manage_call=True,
-    )
