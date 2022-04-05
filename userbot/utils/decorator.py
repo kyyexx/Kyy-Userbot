@@ -14,6 +14,10 @@ from userbot import (
     CMD_HANDLER,
     CMD_LIST,
     LOAD_PLUG,
+    KYY2,
+    KYY3,
+    KYY4,
+    KYY5,
     SUDO_HANDLER,
     SUDO_USERS,
     bot,
@@ -62,14 +66,8 @@ def kyy_cmd(
                 cmd2 = sudo_ + command
             else:
                 cmd1 = (
-                    (kyy_ +
-                     pattern).replace(
-                        "$",
-                        "").replace(
-                        "\\",
-                        "").replace(
-                        "^",
-                        ""))
+                    (kyy_ + pattern).replace("$", "").replace("\\", "").replace("^", "")
+                )
                 cmd2 = (
                     (sudo_ + pattern)
                     .replace("$", "")
@@ -82,26 +80,60 @@ def kyy_cmd(
                 CMD_LIST.update({file_test: [cmd1]})
 
     def decorator(func):
-        if not disable_edited:
-            bot.add_event_handler(
-                func, events.MessageEdited(
-                    **args, outgoing=True, pattern=kyy_reg))
-        bot.add_event_handler(
-            func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
-        )
-        if allow_sudo:
+        if bot:
             if not disable_edited:
                 bot.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
+                )
+            bot.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
+            )
+        if bot:
+            if allow_sudo:
+                if not disable_edited:
+                    bot.add_event_handler(
+                        func,
+                        events.MessageEdited(
+                            **args, from_users=list(SUDO_USERS), pattern=sudo_reg
+                        ),
+                    )
+                bot.add_event_handler(
                     func,
-                    events.MessageEdited(
+                    events.NewMessage(
                         **args, from_users=list(SUDO_USERS), pattern=sudo_reg
                     ),
                 )
-            bot.add_event_handler(
-                func,
-                events.NewMessage(
-                    **args, from_users=list(SUDO_USERS), pattern=sudo_reg
-                ),
+        if KYY2:
+            if not disable_edited:
+                KYY2.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
+                )
+            KYY2.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
+            )
+        if KYY3:
+            if not disable_edited:
+                KYY3.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
+                )
+            KYY3.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
+            )
+        if KYY4:
+            if not disable_edited:
+                KYY4.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
+                )
+            KYY4.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
+            )
+        if KYY5:
+            if not disable_edited:
+                KYY5.add_event_handler(
+                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
+                )
+            KYY5.add_event_handler(
+                func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
             )
         try:
             LOAD_PLUG[file_test].append(func)
@@ -116,7 +148,16 @@ def kyy_handler(
     **args,
 ):
     def decorator(func):
-        bot.add_event_handler(func, events.NewMessage(**args, incoming=True))
+        if bot:
+            bot.add_event_handler(func, events.NewMessage(**args))
+        if KYY2:
+            KYY2.add_event_handler(func, events.NewMessage(**args))
+        if KYY3:
+            KYY3.add_event_handler(func, events.NewMessage(**args))
+        if KYY4:
+            KYY4.add_event_handler(func, events.NewMessage(**args))
+        if KYY5:
+            KYY5.add_event_handler(func, events.NewMessage(**args))
         return func
 
     return decorator
@@ -137,9 +178,24 @@ def asst_cmd(**args):
     return decorator
 
 
-def callback(**args):
-    """Assistant's callback decorator"""
+def chataction(**args):
+    def decorator(func):
+        if bot:
+            bot.add_event_handler(func, events.ChatAction(**args))
+        if KYY2:
+            KYY2.add_event_handler(func, events.ChatAction(**args))
+        if KYY3:
+            KYY3.add_event_handler(func, events.ChatAction(**args))
+        if KYY4:
+            KYY4.add_event_handler(func, events.ChatAction(**args))
+        if KYY5:
+            KYY5.add_event_handler(func, events.ChatAction(**args))
+        return func
 
+    return decorator
+
+
+def callback(**args):
     def decorator(func):
         if tgbot:
             tgbot.add_event_handler(func, events.CallbackQuery(**args))
