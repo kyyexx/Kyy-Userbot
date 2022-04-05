@@ -33,7 +33,7 @@ from userbot import (
 from userbot.modules.gcast import GCAST_BLACKLIST as GBL
 
 EOL = "EOL\nKyy-UserBot v{}, Copyright © 2021-2022 Kyy <https://github.com/muhammadrizky16>"
-MSG_BLACKLIST = "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOT {} GUA MATIIN NAJIS BANGET DIPAKE JAMET KEK LU.\nKyy-UserBot v{}, Copyright © 2021-2022 Kyy <https://github.com/muhammadrizky16>"
+MSG_BLACKLIST = "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOT {} GUA MATIIN NAJIS BANGET DIPAKE MANUSIA KEK LU.\nKyy-UserBot v{}, Copyright © 2021-2022 Kyy <https://github.com/muhammadrizky16>"
 
 
 async def kyy_client(client):
@@ -45,7 +45,7 @@ def multikyy():
     if 1663258664 not in DEVS:
         LOGS.warning(EOL.format(version))
         sys.exit(1)
-    if -1001473548283 not in GBL:
+    if -1001380293847 not in GBL:
         LOGS.warning(EOL.format(version))
         sys.exit(1)
     if 1663258664 not in DEFAULT:
