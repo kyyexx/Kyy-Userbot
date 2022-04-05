@@ -522,15 +522,6 @@ async def checking():
     except BaseException:
         pass
 
-with bot:
-    try:
-        bot.loop.run_until_complete(checking())
-    except BaseException:
-        LOGS.info(
-            "Join Support Group @NastySupportt and Channel @NastyProject to see the updates of userbot"
-            "Don't Leave")
-        quit(1)
-
 
 async def update_restart_msg(chat_id, msg_id):
     message = (
