@@ -16,6 +16,7 @@ from userbot import (
     LOGS,
     LOOP,
     call_py,
+    bot,
 )
 from userbot.clients import kyy_userbot_on, multikyy
 from userbot.core.git import git
