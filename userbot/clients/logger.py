@@ -27,15 +27,6 @@ MSG_ON = """
 
 
 async def kyy_userbot_on():
-    new_rights = ChatAdminRights(
-        add_admins=True,
-        invite_users=True,
-        change_info=True,
-        ban_users=True,
-        delete_messages=True,
-        pin_messages=True,
-        manage_call=True,
-    )
     try:
         if bot and tgbot:
             KyyUBOT = await tgbot.get_me()
