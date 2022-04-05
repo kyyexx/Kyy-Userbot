@@ -14,7 +14,6 @@ from userbot import (
     BOT_TOKEN,
     BOT_VER,
     LOGS,
-    LOOP,
     call_py,
     bot,
 )
@@ -26,7 +25,6 @@ from userbot.utils import autobot, autopilot
 try:
     for module_name in ALL_MODULES:
         imported_module = import_module("userbot.modules." + module_name)
-    bot.start()
     call_py.start()
     user = bot.get_me()
     client = multikyy()
@@ -41,11 +39,11 @@ except BaseException as e:
     sys.exit(1)
 
 
-LOOP.run_until_complete(kyy_userbot_on())
+bot.run_until_complete(kyy_userbot_on())
 if not BOTLOG_CHATID:
-    LOOP.run_until_complete(autopilot())
+    bot.run_until_complete(autopilot())
 if not BOT_TOKEN:
-    LOOP.run_until_complete(autobot())
+    bot.run_until_complete(autobot())
 idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
