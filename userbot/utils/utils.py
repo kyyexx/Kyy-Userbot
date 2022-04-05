@@ -279,11 +279,6 @@ async def autopilot():
                 megagroup=True,
             ),
         )
-    except ChannelsTooMuchError:
-        LOGS.info(
-            "Terlalu banyak channel dan grup, hapus salah satu dan restart lagi"
-        )
-        exit(1)
     except BaseException:
         LOGS.info(
             "Terjadi kesalahan, Buat sebuah grup lalu isi id nya di config var BOTLOG_CHATID."
