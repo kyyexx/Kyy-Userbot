@@ -38,16 +38,16 @@ async def kyy_userbot_on():
     )
     try:
         if bot and tgbot:
-            kyyUBOT = await tgbot.get_me()
-            BOT_USERNAME = kyyUBOT.username
+            KyyUBOT = await tgbot.get_me()
+            BOT_USERNAME = KyyUBOT.username
             await bot(InviteToChannelRequest(int(BOTLOG_CHATID), [BOT_USERNAME]))
             await asyncio.sleep(3)
     except BaseException:
         pass
     try:
         if bot and tgbot:
-            kyyUBOT = await tgbot.get_me()
-            BOT_USERNAME = kyyUBOT.username
+            KyyUBOT = await tgbot.get_me()
+            BOT_USERNAME = KyyUBOT.username
             await bot(EditAdminRequest(BOTLOG_CHATID, BOT_USERNAME, new_rights, "BOT"))
             await asyncio.sleep(3)
     except BaseException:
