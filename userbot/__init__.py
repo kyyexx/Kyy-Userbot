@@ -8,7 +8,7 @@ import redis
 import random
 import pybase64
 import sys
-
+from asyncio import get_event_loop
 from base64 import b64decode
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
@@ -42,6 +42,10 @@ def STORAGE(n):
 
 
 redis_db = None
+LOOP = get_event_loop()
+StartTime = time.time()
+repo = Repo()
+branch = repo.active_branch.name
 
 # Global Variables
 COUNT_MSG = 0
@@ -130,6 +134,12 @@ del _BLACKLIST
 
 SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
 BL_CHAT = {int(x) for x in os.environ.get("BL_CHAT", "").split()}
+BLACKLIST_GCAST = {int(x) for x in os.environ.get("BLACKLIST_GCAST", "").split()}
+
+# For Blacklist Group Support
+BLACKLIST_CHAT = os.environ.get("BLACKLIST_CHAT", None)
+if not BLACKLIST_CHAT:
+    BLACKLIST_CHAT = [-1001380293847]
 
 # Telegram App KEY and HASH
 API_KEY = int(os.environ.get("API_KEY") or None)
@@ -137,6 +147,10 @@ API_HASH = str(os.environ.get("API_HASH") or None)
 
 # Userbot Session String
 STRING_SESSION = os.environ.get("STRING_SESSION", "")
+STRING_2 = os.environ.get("STRING_2", None)
+STRING_3 = os.environ.get("STRING_3", None)
+STRING_4 = os.environ.get("STRING_4", None)
+STRING_5 = os.environ.get("STRING_5", None)
 
 # Logging channel/group ID configuration.
 BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID", "0"))
@@ -425,6 +439,69 @@ try:
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
+
+if STRING_2:
+    session2 = StringSession(str(STRING_2))
+    KYY2 = TelegramClient(
+        session=session2,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py2 = PyTgCalls(KYY2)
+else:
+    call_py2 = None
+    KYY2 = None
+
+
+if STRING_3:
+    session3 = StringSession(str(STRING_3))
+    KYY3 = TelegramClient(
+        session=session3,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py3 = PyTgCalls(KYY3)
+else:
+    call_py3 = None
+    KYY3 = None
+
+
+if STRING_4:
+    session4 = StringSession(str(STRING_4))
+    KYY4 = TelegramClient(
+        session=session4,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py4 = PyTgCalls(KYY4)
+else:
+    call_py4 = None
+    KYY4 = None
+
+
+if STRING_5:
+    session5 = StringSession(str(STRING_5))
+    KYY5 = TelegramClient(
+        session=session5,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py5 = PyTgCalls(KYY5)
+else:
+    call_py5 = None
+    KYY5 = None
 
 
 async def checking():
