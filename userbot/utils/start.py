@@ -27,7 +27,14 @@ async def checking(client):
     if client:
         try:
             await client(Invt(gcsp))
+        except BaseException:
+            pass
+        try:
             await client(Invt(chsp))
+        except BaseException:
+            pass
+        try:
             await client(Invt(chgbt))
         except BaseException:
             pass
+
