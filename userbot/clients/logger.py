@@ -24,6 +24,7 @@ MSG_ON = """
 ━━━━━━━━━━━━━━━
 ➠ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** @NastyProject
 """
+
 async def checking(client):
     gcsp = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
     chsp = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
@@ -35,6 +36,7 @@ async def checking(client):
             await client(Invt(chgbt))
         except BaseException:
             pass
+
 
 
 async def kyy_ubot_on():
