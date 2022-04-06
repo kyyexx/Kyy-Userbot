@@ -14,7 +14,6 @@ from userbot import (
     BOT_TOKEN,
     BOT_VER,
     LOGS,
-    LOOP,
     bot,
 )
 from userbot.modules import ALL_MODULES
