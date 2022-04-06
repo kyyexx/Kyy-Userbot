@@ -6,5 +6,5 @@
 # t.me/SharingUserbot & t.me/Lunatic0de
 
 from .client_list import client_id, clients_list
-from .logger import kyy_userbot_on
-from .startup import kyy_client, multikyy
+from .logger import kyy_ubot_on
+from .startup import kyy_clients, multiclientkyy

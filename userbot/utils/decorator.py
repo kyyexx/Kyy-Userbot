@@ -13,11 +13,11 @@ from userbot import (
     BL_CHAT,
     CMD_HANDLER,
     CMD_LIST,
-    LOAD_PLUG,
     KYY2,
     KYY3,
     KYY4,
     KYY5,
+    LOAD_PLUG,
     SUDO_HANDLER,
     SUDO_USERS,
     bot,
@@ -66,8 +66,14 @@ def kyy_cmd(
                 cmd2 = sudo_ + command
             else:
                 cmd1 = (
-                    (kyy_ + pattern).replace("$", "").replace("\\", "").replace("^", "")
-                )
+                    (kyy_ +
+                     pattern).replace(
+                        "$",
+                        "").replace(
+                        "\\",
+                        "").replace(
+                        "^",
+                        ""))
                 cmd2 = (
                     (sudo_ + pattern)
                     .replace("$", "")
@@ -177,7 +183,6 @@ def asst_cmd(**args):
 
     return decorator
 
-
 def chataction(**args):
     def decorator(func):
         if bot:
@@ -194,8 +199,9 @@ def chataction(**args):
 
     return decorator
 
-
 def callback(**args):
+    """Assistant's callback decorator"""
+
     def decorator(func):
         if tgbot:
             tgbot.add_event_handler(func, events.CallbackQuery(**args))

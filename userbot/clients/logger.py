@@ -13,20 +13,24 @@ from telethon.tl.types import ChatAdminRights
 from userbot import BOT_VER as version
 from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
-from userbot import KYY3, KYY3, KYY4, KYY5, bot, branch, tgbot
+from userbot import KYY2, KYY3, KYY4, KYY5, bot, branch, tgbot
 from userbot import checking
 
 MSG_ON = """
-✨**ҡʏʏ-υѕєявσт ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋғᴛɪғᴋᴀɴ**!!
-━━━━━━━━━━━━━━━
-➠ **Userbot Version -** `{}@{}`
-➠ **Ketik** `{}ping` **untuk Mengecheck Bot**
-━━━━━━━━━━━━━━━
-➠ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** @NastyProject
+✨**ҡʏʏ-υѕєявσт ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋғᴛɪғᴋᴀɴ**!!\n━━━━━━━━━━━━━━━\n➠ **ᴜsᴇʀʙᴏᴛ ᴠᴇʀsɪᴏɴ** - `3.1.5@Kyy-Userbot`\n━━━━━━━━━━━━━━━\n➠ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** @NastyProject 
 """
 
 
-async def kyy_userbot_on():
+async def kyy_ubot_on():
+    new_rights = ChatAdminRights(
+        add_admins=True,
+        invite_users=True,
+        change_info=True,
+        ban_users=True,
+        delete_messages=True,
+        pin_messages=True,
+        manage_call=True,
+    )
     try:
         if bot and tgbot:
             KyyUBOT = await tgbot.get_me()

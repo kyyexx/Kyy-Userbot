@@ -13,8 +13,8 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 async def clients_list(SUDO_USERS, bot, KYY2, KYY3, KYY4, KYY5):
     user_ids = list(SUDO_USERS) or []
-    main_id = await bot.get_me()
-    user_ids.append(main_id.id)
+    kyy_id = await bot.get_me()
+    user_ids.append(kyy_id.id)
 
     try:
         if KYY2 is not None:
@@ -54,11 +54,11 @@ async def client_id(event, botid=None):
     if botid is not None:
         uid = await event.client(GetFullUserRequest(botid))
         OWNER_ID = uid.user.id
-        KYY_USER = uid.user.first_name
+        KYY_CLIENT = uid.user.first_name
     else:
         client = await event.client.get_me()
         uid = telethon.utils.get_peer_id(client)
         OWNER_ID = uid
-        KYY_USER = client.first_name
-    kyy_mention = f"[{KYY_USER}](tg://user?id={OWNER_ID})"
-    return OWNER_ID, KYY_USER, kyy_mention
+        KYY_CLIENT = client.first_name
+    kyy_rpk = f"[{KYY_CLIENT}](tg://user?id={OWNER_ID})"
+    return OWNER_ID, KYY_CLIENT, kyy_rpk

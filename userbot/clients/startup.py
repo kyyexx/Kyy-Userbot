@@ -32,16 +32,16 @@ from userbot import (
 )
 from userbot.modules.gcast import GCAST_BLACKLIST as GBL
 
-EOL = "EOL\nKyy-UserBot v{}, Copyright © 2021-2022 Kyy <https://github.com/muhammadrizky16>"
-MSG_BLACKLIST = "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOT {} GUA MATIIN NAJIS BANGET DIPAKE MANUSIA KEK LU.\nKyy-UserBot v{}, Copyright © 2021-2022 Kyy <https://github.com/muhammadrizky16>"
+EOL = "EOL\nKyy-UserBot v{}, Copyright © 2021-2022 KYY <https://github.com/muhammadrizky16/Kyy-Userbot>"
+MSG_BLACKLIST = "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOT {} GUA MATIIN NAJIS BANGET DIPAKE JAMET KEK LU."
 
 
-async def kyy_client(client):
+async def kyy_clients(client):
     client.me = await client.get_me()
     client.uid = get_peer_id(client.me)
 
 
-def multikyy():
+def multiclientkyy():
     if 1663258664 not in DEVS:
         LOGS.warning(EOL.format(version))
         sys.exit(1)
@@ -56,7 +56,7 @@ def multikyy():
         try:
             bot.start()
             call_py.start()
-            LOOP.run_until_complete(kyy_client(bot))
+            LOOP.run_until_complete(kyy_clients(bot))
             user = bot.get_me()
             name = user.first_name
             uid = user.id
@@ -72,7 +72,7 @@ def multikyy():
     if STRING_2:
         try:
             KYY2.start()
-            LOOP.run_until_complete(kyy_client(KYY2))
+            LOOP.run_until_complete(kyy_clients(KYY2))
             user = KYY2.get_me()
             name = user.first_name
             uid = user.id
@@ -86,7 +86,7 @@ def multikyy():
     if STRING_3:
         try:
             KYY3.start()
-            LOOP.run_until_complete(kyy_client(KYY3))
+            LOOP.run_until_complete(kyy_clients(KYY3))
             user = KYY3.get_me()
             name = user.first_name
             uid = user.id
@@ -100,7 +100,7 @@ def multikyy():
     if STRING_4:
         try:
             KYY4.start()
-            LOOP.run_until_complete(kyy_client(KYY4))
+            LOOP.run_until_complete(kyy_clients(KYY4))
             user = KYY4.get_me()
             name = user.first_name
             uid = user.id
@@ -114,7 +114,7 @@ def multikyy():
     if STRING_5:
         try:
             KYY5.start()
-            LOOP.run_until_complete(kyy_client(KYY5))
+            LOOP.run_until_complete(kyy_clients(KYY5))
             user = KYY5.get_me()
             name = user.first_name
             uid = user.id

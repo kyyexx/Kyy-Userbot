@@ -8,13 +8,16 @@ import redis
 import random
 import pybase64
 import sys
+
 from asyncio import get_event_loop
 from base64 import b64decode
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
 from math import ceil
+from pathlib import Path
 
+from git import Repo
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from pytgcalls import PyTgCalls
@@ -22,7 +25,6 @@ from pymongo import MongoClient
 from datetime import datetime
 from redis import StrictRedis
 from dotenv import load_dotenv
-from git import Repo
 from requests import get
 from telethon import Button
 from telethon.sync import TelegramClient, custom, events
@@ -43,10 +45,11 @@ def STORAGE(n):
 
 
 redis_db = None
+
 LOOP = get_event_loop()
-StartTime = time.time()
 repo = Repo()
 branch = repo.active_branch.name
+
 
 # Global Variables
 COUNT_MSG = 0
@@ -135,12 +138,6 @@ del _BLACKLIST
 
 SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
 BL_CHAT = {int(x) for x in os.environ.get("BL_CHAT", "").split()}
-BLACKLIST_GCAST = {int(x) for x in os.environ.get("BLACKLIST_GCAST", "").split()}
-
-# For Blacklist Group Support
-BLACKLIST_CHAT = os.environ.get("BLACKLIST_CHAT", None)
-if not BLACKLIST_CHAT:
-    BLACKLIST_CHAT = [-1001380293847]
 
 # Telegram App KEY and HASH
 API_KEY = int(os.environ.get("API_KEY") or None)
@@ -426,7 +423,7 @@ for binary, path in binaries.items():
 if STRING_SESSION:
     session = StringSession(str(STRING_SESSION))
 else:
-    session = "Kyy-Userbot"
+    session = "Kyy-UserBot"
 try:
     bot = TelegramClient(
         session=session,
@@ -522,6 +519,15 @@ async def checking():
     except BaseException:
         pass
 
+with bot:
+    try:
+        bot.loop.run_until_complete(checking())
+    except BaseException:
+        LOGS.info(
+            "Join Support Group @NastySupportt and Channel @NastyProject to see the updates of userbot"
+            "Don't Leave")
+        quit(1)
+
 
 async def update_restart_msg(chat_id, msg_id):
     message = (
@@ -540,7 +546,7 @@ try:
     chat_id, msg_id = gvarstatus("restartstatus").split("\n")
     with bot:
         try:
-            LOOP.loop.run_until_complete(
+            bot.loop.run_until_complete(
                 update_restart_msg(
                     int(chat_id), int(msg_id)))
         except BaseException:
@@ -885,20 +891,19 @@ with bot:
                 await event.edit(f"""
 Voice chat group menu untuk {owner}
 """,
-                    buttons=[
-                        [
-                            Button.inline("ᴠᴄ ᴘʟᴜɢɪɴ ⚙️",
-                                          data="vcplugin"),
-                            Button.inline("ᴠᴄ ᴛᴏᴏʟs ⚙️",
-                                           data="vctools")],
-                        [custom.Button.inline(
-                            "ʙᴀᴄᴋ", data="gcback")],
-                    ]
-                )
+                                 buttons=[
+                                     [
+                                         Button.inline("ᴠᴄ ᴘʟᴜɢɪɴ ⚙️",
+                                                       data="vcplugin"),
+                                         Button.inline("ᴠᴄ ᴛᴏᴏʟs ⚙️",
+                                                       data="vctools")],
+                                     [custom.Button.inline(
+                                         "ʙᴀᴄᴋ", data="gcback")],
+                                 ]
+                                 )
             else:
                 reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
 
         @tgbot.on(
             events.callbackquery.CallbackQuery(  # pylint:disable=E0602
@@ -909,7 +914,7 @@ Voice chat group menu untuk {owner}
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 text = (
                     f"""
-✘ **Commands available in vcplugin** ✘ 
+✘ **Commands available in vcplugin** ✘
 
   𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}play` <Judul Lagu/Link YT>
   ↳ : Untuk Memutar Lagu di voice chat group dengan akun kamu
@@ -953,24 +958,24 @@ Voice chat group menu untuk {owner}
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 text = (
                     f"""
-✘ **Commands available in vctools** ✘ 
+✘ **Commands available in vctools** ✘
 
-  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}startvc`        
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}startvc`
   ↳ : Untuk Memulai voice chat group
-        
-  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}stopvc`        
+
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}stopvc`
   ↳ : Untuk Memberhentikan voice chat group
-        
-  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}vctitle` <title vcg>        
+
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}vctitle` <title vcg>
   ↳ : Untuk Mengubah title/judul voice chat group
-       
-  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}vcinvite`        
+
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}vcinvite`
   ↳ : Mengundang Member group ke voice chat group
-        
-  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}joinvc`        
+
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}joinvc`
   ↳ : Melakukan Fake voice chat group
-   
-  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}leavevc`        
+
+  𝘾𝙤𝙢𝙢𝙖𝙣𝙙 : `{cmd}leavevc`
   ↳ : Memberhentikan Fake voice chat group
 """)
                 await event.edit(
@@ -981,7 +986,6 @@ Voice chat group menu untuk {owner}
             else:
                 reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
 
         @tgbot.on(events.CallbackQuery(data=b"close"))
         async def close(event):

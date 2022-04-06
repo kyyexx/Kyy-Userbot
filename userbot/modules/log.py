@@ -14,7 +14,7 @@ from userbot.modules.vcg import vcmention
 from userbot.utils import _format, edit_delete, edit_or_reply
 from userbot.utils.tools import media_type
 
-from userbot.utils import kyy_cmd
+from userbot.utils import kyy_cmd,kyy_handler
 
 
 class LOG_CHATS:
@@ -47,8 +47,7 @@ async def logaddjoin(kyy):
     await kyy.client.send_message(BOTLOG_CHATID, text)
 
 
-@bot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
-@bot.on(events.MessageEdited(incoming=True, func=lambda e: e.is_private))
+@kyy_handler(incoming=True, func=lambda e: e.is_private)
 async def monito_p_m_s(kyy):
     if BOTLOG_CHATID == -100:
         return
@@ -83,8 +82,7 @@ async def monito_p_m_s(kyy):
                 LOGS.warn(str(e))
 
 
-@bot.on(events.NewMessage(incoming=True, func=lambda e: e.mentioned))
-@bot.on(events.MessageEdited(incoming=True, func=lambda e: e.mentioned))
+@kyy_handler(incoming=True, func=lambda e: e.mentioned)
 async def log_tagged_messages(yahaha):
     if BOTLOG_CHATID == -100:
         return

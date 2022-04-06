@@ -11,11 +11,11 @@ import re
 
 import userbot.modules.sql_helper.blacklist_sql as sql
 from userbot import CMD_HELP, CMD_HANDLER as cmd
-from userbot.utils import kyy_cmd
+from userbot.utils import kyy_cmd,kyy_handler
 from userbot.events import register
 
 
-@register(incoming=True, disable_edited=True, disable_errors=True)
+@kyy_handler(incoming=True)
 async def on_new_message(event):
     # TODO: exempt admins from locks
     name = event.raw_text
@@ -72,7 +72,7 @@ async def on_view_blacklist(listbl):
         await listbl.edit(OUT_STR)
 
 
-@register(outgoing=True, pattern=r"^\.rmbl(?: |$)(.*)")
+@kyy_cmd(pattern="rmbl(?: |$)(.*)")
 async def on_delete_blacklist(rmbl):
     text = rmbl.pattern_match.group(1)
     to_unblacklist = list(

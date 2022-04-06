@@ -9,45 +9,70 @@ import sys
 from importlib import import_module
 from pytgcalls import idle
 
+import requests
+from telethon.tl.functions.channels import InviteToChannelRequest as Addbot
 from userbot import (
     BOTLOG_CHATID,
+    BOT_USERNAME,
     BOT_TOKEN,
     BOT_VER,
     LOGS,
     LOOP,
+    kyyblacklist,
     bot,
+    call_py,
 )
-from userbot.clients import kyy_userbot_on, multikyy
-from userbot.core.git import git
 from userbot.modules import ALL_MODULES
-from userbot.utils import autobot, autopilot
+from userbot.clients import kyy_ubot_on,multiclientkyy
+from userbot.utils import autobot, autopilot,git
 
 try:
-    for module_name in ALL_MODULES:
-        imported_module = import_module("userbot.modules." + module_name)
-    user = bot.get_me()
-    client = multikyy()
+    client = multiclientkyy()
     total = 5 - client
     git()
-    LOGS.info(f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/NastySupportt")
-    LOGS.info(f"✨Kyy-Userbot✨ ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
-except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
-    pass
-except BaseException as e:
+    LOGS.info(f"Total Clients = {total} User")
+except Exception as e:
     LOGS.info(str(e), exc_info=True)
     sys.exit(1)
 
+for module_name in ALL_MODULES:
+    imported_module = import_module("userbot.modules." + module_name)
 
-LOOP.run_until_complete(kyy_userbot_on())
 if not BOTLOG_CHATID:
-    LOOP.run_until_complete(autopilot())
+    LOGS.info(
+        "BOTLOG_CHATID Vars tidak terisi, Memulai Membuat Grup Otomatis..."
+    )
+    bot.loop.run_until_complete(autopilot())
+else:
+    pass
+
+LOGS.info(
+    f"Jika Anda Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/NastySupportt")
+LOGS.info(
+    f"✨Kyy-Userbot✨ ⚙️ V{BOT_VER} [TELAH DIAKTIFKAN!]")
+
+
+# async def check_alive():
+#     try:
+#         if BOTLOG_CHATID != 0:
+#             await bot.send_message(BOTLOG_CHATID, "✨**ҡʏʏ-υѕєявσт ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋғᴛɪғᴋᴀɴ**!!\n━━━━━━━━━━━━━━━\n➠ **ᴜsᴇʀʙᴏᴛ ᴠᴇʀsɪᴏɴ** - `3.1.5@Kyy-Userbot`\n━━━━━━━━━━━━━━━\n➠ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** @NastyProject ")
+#     except Exception as e:
+#         LOGS.info(str(e))
+#     try:
+#         await bot(Addbot(int(BOTLOG_CHATID), [BOT_USERNAME]))
+#     except BaseException:
+#         pass
+    
+    
+LOOP.run_until_complete(kyy_ubot_on())
+# bot.loop.run_until_complete(check_alive())
 if not BOT_TOKEN:
-    LOOP.run_until_complete(autobot())
+    LOGS.info(
+        "BOT_TOKEN Vars tidak terisi, Memulai Membuat BOT Otomatis di @Botfather..."
+    )
+    bot.loop.run_until_complete(autobot())
 idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
-    try:
-        bot.run_until_disconnected()
-    except ConnectionError:
-        pass
+    bot.run_until_disconnected()

@@ -22,7 +22,7 @@ from userbot import (  # noqa pylint: disable=unused-import isort:skip
     bot,
 )
 from userbot import CMD_HANDLER as cmd
-from userbot.utils import kyy_cmd
+from userbot.utils import kyy_cmd,kyy_handler
 
 global USER_AFK
 global afk_time
@@ -37,8 +37,7 @@ last_afk_msg = {}
 afk_start = {}
 
 
-@bot.on(events.NewMessage(outgoing=True))
-@bot.on(events.MessageEdited(outgoing=True))
+@kyy_handler(outgoing=True)
 async def set_not_afk(event):
     global USER_AFK
     global afk_time
@@ -87,8 +86,7 @@ async def set_not_afk(event):
         os.system("rm -rf *.jpg")
 
 
-@bot.on(events.NewMessage(incoming=True,
-                          func=lambda e: bool(e.mentioned or e.is_private)))
+@kyy_handler(incoming=True, func=lambda e: e.is_private)
 async def on_afk(event):
     if event.fwd_from:
         return
