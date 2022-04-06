@@ -39,10 +39,7 @@ from userbot import (
 heroku_api = "https://api.heroku.com"
 if HEROKU_APP_NAME is not None and HEROKU_API_KEY is not None:
     Heroku = heroku3.from_key(HEROKU_API_KEY)
-    try:
-        app = Heroku.app(HEROKU_APP_NAME)
-    except BaseException:
-        pass
+    app = Heroku.app(HEROKU_APP_NAME)
     heroku_var = app.config()
 else:
     app = None
