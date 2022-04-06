@@ -262,12 +262,12 @@ async def menuclient(event):
                 Button.inline("sᴛʀɪɴɢ_sᴇssɪᴏɴ", data="strone"),
             ],
             [
-                Button.inline("sᴛʀɪɴɢ²", data="strtwo"),
-                Button.inline("sᴛʀɪɴɢ³", data="strtri"),
+                Button.inline("sᴛʀɪɴɢ 𝟸", data="strtwo"),
+                Button.inline("sᴛʀɪɴɢ 𝟹", data="strtri"),
             ],
             [
-                Button.inline("sᴛʀɪɴɢ⁴", data="strfor"),
-                Button.inline("sᴛʀɪɴɢ⅝", data="strfiv"),
+                Button.inline("sᴛʀɪɴɢ 𝟺", data="strfor"),
+                Button.inline("sᴛʀɪɴɢ 𝟻", data="strfiv"),
             ],
             [Button.inline("ʙᴀᴄᴋ", data="apiset")],
         ],
