@@ -36,6 +36,7 @@ from telethon.sync import TelegramClient, custom, events
 from telethon import Button, events, functions, types
 from telethon.tl.types import InputWebDocument
 from telethon.utils import get_display_name
+from telethon import version
 
 from .storage import Storage
 
@@ -502,31 +503,25 @@ else:
     KYY5 = None
 
 
-async def checking():
-    gocheck = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
-    checker = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
-    checker2 = str(pybase64.b64decode("QGFoaHN1ZGFobGFoaGg="))[2:16]
-    try:
-        await bot(GetSec(gocheck))
-    except BaseException:
-        pass
-    try:
-        await bot(GetSec(checker))
-    except BaseException:
-        pass
-    try:
-        await bot(GetSec(checker2))
-    except BaseException:
-        pass
+# async def checking():
+#     gcsp = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
+#     chsp = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
+#     chgbt = str(pybase64.b64decode("QGFoaHN1ZGFobGFoaGg="))[2:16]
+#     try:
+#         await bot(GetSec(gcsp))
+#         await bot(GetSec(chsp))
+#         await bot(GetSec(chgbt))
+#     except BaseException:
+#         pass
 
-with bot:
-    try:
-        LOOP.run_until_complete(checking())
-    except BaseException:
-        LOGS.info(
-            "Join Support Group @NastySupportt and Channel @NastyProject to see the updates of userbot"
-            "Don't Leave")
-        quit(1)
+# with bot:
+#     try:
+#         LOOP.run_until_complete(checking())
+#     except BaseException:
+#         LOGS.info(
+#             "Join Support Group @NastySupportt and Channel @NastyProject to see the updates of userbot"
+#             "Don't Leave")
+#         quit(1)
 
 
 async def update_restart_msg(chat_id, msg_id):

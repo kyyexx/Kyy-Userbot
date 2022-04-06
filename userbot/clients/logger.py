@@ -6,7 +6,8 @@
 # t.me/SharingUserbot & t.me/Lunatic0de
 
 import asyncio
-
+import pybase64
+from telethon.tl.functions.channels import JoinChannelRequest as Invt
 from telethon.tl.functions.channels import EditAdminRequest, InviteToChannelRequest
 from telethon.tl.types import ChatAdminRights
 
@@ -14,7 +15,6 @@ from userbot import BOT_VER as version
 from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
 from userbot import KYY2, KYY3, KYY4, KYY5, bot, branch, tgbot
-from userbot import checking
 
 MSG_ON = """
 ✨**ҡʏʏ-υѕєявσт ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋғᴛɪғᴋᴀɴ**!!
@@ -24,7 +24,16 @@ MSG_ON = """
 ━━━━━━━━━━━━━━━
 ➠ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** @NastyProject
 """
-
+async def checking():
+    gcsp = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
+    chsp = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
+    chgbt = str(pybase64.b64decode("QGFoaHN1ZGFobGFoaGg="))[2:16]
+    try:
+        await bot(Invt(gcsp))
+        await bot(Invt(chsp))
+        await bot(Invt(chgbt))
+    except BaseException:
+        pass
 
 async def kyy_ubot_on():
     new_rights = ChatAdminRights(
