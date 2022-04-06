@@ -10,7 +10,6 @@ from importlib import import_module
 from pytgcalls import idle
 
 from userbot import (
-    BOT_TOKEN,
     BOT_VER,
     LOGS,
     bot,
@@ -45,9 +44,9 @@ LOGS.info(
 
 bot.loop.run_until_complete(kyy_ubot_on())
 bot.loop.run_until_complete(autobot())
-    LOGS.info(
-        "BOT_TOKEN Vars tidak terisi, Memulai Membuat BOT Otomatis di @Botfather..."
-    )
+LOGS.info(
+    "BOT_TOKEN Vars tidak terisi, Memulai Membuat BOT Otomatis di @Botfather..."
+)
 idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
