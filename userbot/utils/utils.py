@@ -278,21 +278,40 @@ def remove_plugin(shortname):
 # bye Ice-Userbot
 
 async def autopilot():
-    LOGS.info("TUNGGU SEBENTAR. SEDANG MEMBUAT GROUP LOG USERBOT UNTUK ANDA")
-    desc = "ᴍʏ ҡʏʏ ʟᴏɢs ɢʀᴏᴜᴘ\n\n Join @NastyProject"
+    if BOTLOG_CHATID and str(BOTLOG_CHATID).startswith("-100"):
+        return
+    k = []  # To Refresh private ids
+    async for x in bot.iter_dialogs():
+        k.append(x.id)
+    if BOTLOG_CHATID:
+        try:
+            await bot.get_entity(int("BOTLOG_CHATID"))
+            return
+        except BaseException:
+            del heroku_var["BOTLOG_CHATID"]
     try:
-        grup = await bot(
-            CreateChannelRequest(title="ҡʏʏ ʟᴏɢs", about=desc, megagroup=True)
+        r = await bot(
+            CreateChannelRequest(
+                title="ҡʏʏ ʟᴏɢs",
+                about="ᴍʏ ҡʏʏ ʟᴏɢs ɢʀᴏᴜᴘ\n\n Join @NastyProject",
+                megagroup=True,
+            ),
         )
-        grup_id = grup.chats[0].id
-    except Exception as e:
-        LOGS.error(str(e))
-        LOGS.warning(
-            "var BOTLOG_CHATID kamu belum di isi. Buatlah grup telegram dan masukan bot @MissRose_bot lalu ketik /id Masukan id grup nya di var BOTLOG_CHATID"
+    except ChannelsTooMuchError:
+        LOGS.info(
+            "Terlalu banyak channel dan grup, hapus salah satu dan restart lagi"
         )
-    if not str(grup_id).startswith("-100"):
-        grup_id = int(f"-100{str(grup_id)}")
-    heroku_var["BOTLOG_CHATID"] = grup_id
+        exit(1)
+    except BaseException:
+        LOGS.info(
+            "Terjadi kesalahan, Buat sebuah grup lalu isi id nya di config var BOTLOG_CHATID."
+        )
+        exit(1)
+    chat_id = r.chats[0].id
+    if not str(chat_id).startswith("-100"):
+        heroku_var["BOTLOG_CHATID"] = "-100" + str(chat_id)
+    else:
+        heroku_var["BOTLOG_CHATID"] = str(chat_id)
 
 
 def install_req(cmd: str) -> Tuple[str, str, int, int]:
