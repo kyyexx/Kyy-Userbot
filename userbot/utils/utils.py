@@ -279,7 +279,7 @@ def remove_plugin(shortname):
 
 async def autopilot():
     LOGS.info("TUNGGU SEBENTAR. SEDANG MEMBUAT GROUP LOG USERBOT UNTUK ANDA")
-    desc = "ᴍʏ ҡʏʏ ʟᴏɢs ɢʀᴏᴜᴘ\n\n Join @NastyProject""
+    desc = "ᴍʏ ҡʏʏ ʟᴏɢs ɢʀᴏᴜᴘ\n\n Join @NastyProject"
     try:
         grup = await bot(
             CreateChannelRequest(title="ҡʏʏ ʟᴏɢs", about=desc, megagroup=True)
