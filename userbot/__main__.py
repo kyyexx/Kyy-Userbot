@@ -32,25 +32,13 @@ except Exception as e:
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
-# bot.loop.run_until_complete(kyy_ubot_on())
+bot.loop.run_until_complete(kyy_ubot_on())
 if not BOTLOG_CHATID:
     LOGS.info(
         "BOTLOG_CHATID Vars tidak terisi, Memulai Membuat Grup Otomatis..."
     )
     bot.loop.run_until_complete(autopilot())
-# async def check_alive():
-#     try:
-#         if BOTLOG_CHATID != 0:
-#             await bot.send_message(BOTLOG_CHATID, "✨**ҡʏʏ-υѕєявσт ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋғᴛɪғᴋᴀɴ**!!\n━━━━━━━━━━━━━━━\n➠ **ᴜsᴇʀʙᴏᴛ ᴠᴇʀsɪᴏɴ** - `3.1.5@Kyy-Userbot`\n━━━━━━━━━━━━━━━\n➠ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** @NastyProject ")
-#     except Exception as e:
-#         LOGS.info(str(e))
-#     try:
-#         await bot(Addbot(int(BOTLOG_CHATID), [BOT_USERNAME]))
-#     except BaseException:
-#         pass
 
-
-# bot.loop.run_until_complete(check_alive())
 if not BOT_TOKEN:
     LOGS.info(
         "BOT_TOKEN Vars tidak terisi, Memulai Membuat BOT Otomatis di @Botfather..."
