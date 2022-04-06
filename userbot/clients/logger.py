@@ -24,6 +24,7 @@ MSG_ON = """
 ➠ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** @NastyProject
 """
 
+
 async def kyy_ubot_on():
     new_rights = ChatAdminRights(
         add_admins=True,
