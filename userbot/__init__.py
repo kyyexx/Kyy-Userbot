@@ -36,6 +36,7 @@ from telethon.sync import TelegramClient, custom, events
 from telethon import Button, events, functions, types
 from telethon.tl.types import InputWebDocument
 from telethon.utils import get_display_name
+from userbot.clients import kyy_ubot_on
 
 from .storage import Storage
 
@@ -521,7 +522,7 @@ async def checking():
 
 with bot:
     try:
-        bot.loop.run_until_complete(checking())
+        LOOP.run_until_complete(kyy_ubot_on())
     except BaseException:
         LOGS.info(
             "Join Support Group @NastySupportt and Channel @NastyProject to see the updates of userbot"
