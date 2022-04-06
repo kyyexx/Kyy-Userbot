@@ -24,16 +24,18 @@ MSG_ON = """
 ━━━━━━━━━━━━━━━
 ➠ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** @NastyProject
 """
-async def checking():
+async def checking(client):
     gcsp = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
     chsp = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
     chgbt = str(pybase64.b64decode("QGFoaHN1ZGFobGFoaGg="))[2:16]
-    try:
-        await bot(Invt(gcsp))
-        await bot(Invt(chsp))
-        await bot(Invt(chgbt))
-    except BaseException:
-        pass
+    if client:
+        try:
+            await client(Invt(gcsp))
+            await client(Invt(chsp))
+            await client(Invt(chgbt))
+        except BaseException:
+            pass
+
 
 async def kyy_ubot_on():
     new_rights = ChatAdminRights(
