@@ -522,7 +522,7 @@ async def checking():
 
 with bot:
     try:
-        LOOP.run_until_complete(kyy_ubot_on())
+        LOOP.run_until_complete(checking())
     except BaseException:
         LOGS.info(
             "Join Support Group @NastySupportt and Channel @NastyProject to see the updates of userbot"
