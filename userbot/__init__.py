@@ -36,7 +36,6 @@ from telethon.sync import TelegramClient, custom, events
 from telethon import Button, events, functions, types
 from telethon.tl.types import InputWebDocument
 from telethon.utils import get_display_name
-from userbot.clients import kyy_ubot_on
 
 from .storage import Storage
 
