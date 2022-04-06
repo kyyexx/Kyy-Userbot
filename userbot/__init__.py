@@ -503,27 +503,6 @@ else:
     KYY5 = None
 
 
-# async def checking():
-#     gcsp = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
-#     chsp = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
-#     chgbt = str(pybase64.b64decode("QGFoaHN1ZGFobGFoaGg="))[2:16]
-#     try:
-#         await bot(GetSec(gcsp))
-#         await bot(GetSec(chsp))
-#         await bot(GetSec(chgbt))
-#     except BaseException:
-#         pass
-
-# with bot:
-#     try:
-#         LOOP.run_until_complete(checking())
-#     except BaseException:
-#         LOGS.info(
-#             "Join Support Group @NastySupportt and Channel @NastyProject to see the updates of userbot"
-#             "Don't Leave")
-#         quit(1)
-
-
 async def update_restart_msg(chat_id, msg_id):
     message = (
         f"**Kyy-Userbot v{BOT_VER} is back up and running!**\n\n"

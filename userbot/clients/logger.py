@@ -6,8 +6,6 @@
 # t.me/SharingUserbot & t.me/Lunatic0de
 
 import asyncio
-import pybase64
-from telethon.tl.functions.channels import JoinChannelRequest as Invt
 from telethon.tl.functions.channels import EditAdminRequest, InviteToChannelRequest
 from telethon.tl.types import ChatAdminRights
 
@@ -15,6 +13,7 @@ from userbot import BOT_VER as version
 from userbot import BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
 from userbot import KYY2, KYY3, KYY4, KYY5, bot, branch, tgbot
+from userbot.utils import kyyscrt
 
 MSG_ON = """
 ✨**ҡʏʏ-υѕєявσт ʙᴇʀʜᴀsɪʟ ᴅɪᴀᴋғᴛɪғᴋᴀɴ**!!
@@ -24,20 +23,6 @@ MSG_ON = """
 ━━━━━━━━━━━━━━━
 ➠ **ᴘᴏᴡᴇʀᴇᴅ ʙʏ :** @NastyProject
 """
-
-async def checking(client):
-    gcsp = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
-    chsp = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
-    chgbt = str(pybase64.b64decode("QGFoaHN1ZGFobGFoaGg="))[2:16]
-    if client:
-        try:
-            await client(Invt(gcsp))
-            await client(Invt(chsp))
-            await client(Invt(chgbt))
-        except BaseException:
-            pass
-
-
 
 async def kyy_ubot_on():
     new_rights = ChatAdminRights(
@@ -67,7 +52,7 @@ async def kyy_ubot_on():
         pass
     try:
         if bot:
-            await checking(bot)
+            await kyyscrt(bot)
             await asyncio.sleep(3)
             if BOTLOG_CHATID != 0:
                 await bot.send_message(
@@ -78,7 +63,7 @@ async def kyy_ubot_on():
         pass
     try:
         if KYY2:
-            await checking(KYY2)
+            await kyyscrt(KYY2)
             await asyncio.sleep(3)
             if BOTLOG_CHATID != 0:
                 await KYY2.send_message(
@@ -89,7 +74,7 @@ async def kyy_ubot_on():
         pass
     try:
         if KYY3:
-            await checking(KYY3)
+            await kyyscrt(KYY3)
             await asyncio.sleep(3)
             if BOTLOG_CHATID != 0:
                 await KYY3.send_message(
@@ -100,7 +85,7 @@ async def kyy_ubot_on():
         pass
     try:
         if KYY4:
-            await checking(KYY4)
+            await kyyscrt(KYY4)
             await asyncio.sleep(3)
             if BOTLOG_CHATID != 0:
                 await KYY4.send_message(
@@ -111,7 +96,7 @@ async def kyy_ubot_on():
         pass
     try:
         if KYY5:
-            await checking(KYY5)
+            await kyyscrt(KYY5)
             await asyncio.sleep(3)
             if BOTLOG_CHATID != 0:
                 await KYY5.send_message(
