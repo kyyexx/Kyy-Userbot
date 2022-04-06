@@ -6,7 +6,6 @@
 import os
 import asyncio
 from datetime import datetime
-from telethon import events
 from telethon.tl import functions, types
 
 from userbot import (  # noqa pylint: disable=unused-import isort:skip
@@ -22,7 +21,7 @@ from userbot import (  # noqa pylint: disable=unused-import isort:skip
     bot,
 )
 from userbot import CMD_HANDLER as cmd
-from userbot.utils import kyy_cmd,kyy_handler
+from userbot.utils import kyy_cmd, kyy_handler
 
 global USER_AFK
 global afk_time

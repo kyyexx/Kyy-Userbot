@@ -41,7 +41,7 @@ if HEROKU_APP_NAME is not None and HEROKU_API_KEY is not None:
     Heroku = heroku3.from_key(HEROKU_API_KEY)
     try:
         app = Heroku.app(HEROKU_APP_NAME)
-    except:
+    except BaseException:
         pass
     heroku_var = app.config()
 else:
@@ -350,8 +350,8 @@ async def autopilot():
         anonymous=False,
         manage_call=True,
     )
-    
-    
+
+
 def install_req(cmd: str) -> Tuple[str, str, int, int]:
     async def install_requirements():
         args = shlex.split(cmd)
@@ -369,6 +369,7 @@ def install_req(cmd: str) -> Tuple[str, str, int, int]:
         )
 
     return asyncio.get_event_loop().run_until_complete(install_requirements())
+
 
 def git():
     UPSTREAM_REPO = b64decode(

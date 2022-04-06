@@ -64,7 +64,9 @@ async def setit(event, name, value):
 def text_to_url(event):
     if isinstance(event.media, MessageMediaWebPage):
         webpage = event.media.webpage
-        if not isinstance(webpage, types.WebPageEmpty) and webpage.type in ["photo"]:
+        if not isinstance(
+                webpage,
+                types.WebPageEmpty) and webpage.type in ["photo"]:
             return webpage.display_url
     return event.text
 
@@ -88,7 +90,11 @@ async def check_bot_started_users(user, event):
                 \n**ID: **`{user.id}`\
                 \n**Action: **Telah Me-Restart saya"
     try:
-        add_starter_to_db(user.id, get_display_name(user), start_date, user.username)
+        add_starter_to_db(
+            user.id,
+            get_display_name(user),
+            start_date,
+            user.username)
     except Exception as e:
         LOGS.error(str(e))
     if BOTLOG_CHATID:

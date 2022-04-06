@@ -89,8 +89,8 @@ def kyy_cmd(
         if bot:
             if not disable_edited:
                 bot.add_event_handler(
-                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
-                )
+                    func, events.MessageEdited(
+                        **args, outgoing=True, pattern=kyy_reg))
             bot.add_event_handler(
                 func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
             )
@@ -100,8 +100,9 @@ def kyy_cmd(
                     bot.add_event_handler(
                         func,
                         events.MessageEdited(
-                            **args, from_users=list(SUDO_USERS), pattern=sudo_reg
-                        ),
+                            **args,
+                            from_users=list(SUDO_USERS),
+                            pattern=sudo_reg),
                     )
                 bot.add_event_handler(
                     func,
@@ -112,32 +113,32 @@ def kyy_cmd(
         if KYY2:
             if not disable_edited:
                 KYY2.add_event_handler(
-                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
-                )
+                    func, events.MessageEdited(
+                        **args, outgoing=True, pattern=kyy_reg))
             KYY2.add_event_handler(
                 func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
             )
         if KYY3:
             if not disable_edited:
                 KYY3.add_event_handler(
-                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
-                )
+                    func, events.MessageEdited(
+                        **args, outgoing=True, pattern=kyy_reg))
             KYY3.add_event_handler(
                 func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
             )
         if KYY4:
             if not disable_edited:
                 KYY4.add_event_handler(
-                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
-                )
+                    func, events.MessageEdited(
+                        **args, outgoing=True, pattern=kyy_reg))
             KYY4.add_event_handler(
                 func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
             )
         if KYY5:
             if not disable_edited:
                 KYY5.add_event_handler(
-                    func, events.MessageEdited(**args, outgoing=True, pattern=kyy_reg)
-                )
+                    func, events.MessageEdited(
+                        **args, outgoing=True, pattern=kyy_reg))
             KYY5.add_event_handler(
                 func, events.NewMessage(**args, outgoing=True, pattern=kyy_reg)
             )
@@ -183,6 +184,7 @@ def asst_cmd(**args):
 
     return decorator
 
+
 def chataction(**args):
     def decorator(func):
         if bot:
@@ -198,6 +200,7 @@ def chataction(**args):
         return func
 
     return decorator
+
 
 def callback(**args):
     """Assistant's callback decorator"""

@@ -11,8 +11,7 @@ import re
 
 import userbot.modules.sql_helper.blacklist_sql as sql
 from userbot import CMD_HELP, CMD_HANDLER as cmd
-from userbot.utils import kyy_cmd,kyy_handler
-from userbot.events import register
+from userbot.utils import kyy_cmd, kyy_handler
 
 
 @kyy_handler(incoming=True)

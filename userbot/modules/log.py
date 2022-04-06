@@ -14,7 +14,7 @@ from userbot.modules.vcg import vcmention
 from userbot.utils import _format, edit_delete, edit_or_reply
 from userbot.utils.tools import media_type
 
-from userbot.utils import kyy_cmd,kyy_handler
+from userbot.utils import kyy_cmd, kyy_handler
 
 
 class LOG_CHATS:
