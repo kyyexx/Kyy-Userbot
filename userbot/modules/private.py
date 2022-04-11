@@ -527,7 +527,8 @@ async def pmonn(event):
     await event.edit(
         "Done! PMPermit telah berubah on!!",
         buttons=get_back_button("settings"),
-      )
+    )
+
 
 @callback(data=re.compile(b"pmoff"))
 async def pmofff(event):
@@ -536,7 +537,7 @@ async def pmofff(event):
     await event.edit(
         "Done! PMPermit telah berubah off!!",
         buttons=get_back_button("settings"),
-      )
+    )
 
 
 @callback(data=re.compile(b"strone"))
