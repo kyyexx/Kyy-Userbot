@@ -1028,7 +1028,8 @@ Voice chat group menu untuk [{user.first_name}](tg://user?id={user.id})
                     )
                 )
                 await event.edit(
-                    reply_pop_up_alert, buttons=[Button.inline("ʙᴀᴄᴋ", data="reopen")]
+                    reply_pop_up_alert, buttons=[
+                        Button.inline("ʙᴀᴄᴋ", data="reopen")]
                 )
 
             else:
