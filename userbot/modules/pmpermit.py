@@ -19,6 +19,7 @@ from userbot import CMD_HANDLER as cmd
 from userbot import (
     BOTLOG,
     BOTLOG_CHATID,
+    BOT_USERNAME,
     CMD_HELP,
     PM_AUTO_BAN,
     PM_LIMIT,
