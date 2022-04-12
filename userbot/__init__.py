@@ -628,7 +628,7 @@ with bot:
         ]
 
         USER_BOT_NO_WARN = (
-           f"**PMSecurity of** [{user.first_name}](tg://user?id={user.id})!"
+            f"**PMSecurity of** [{user.first_name}](tg://user?id={user.id})!"
             "\n\nMohon tunggu saya untuk merespon atau Anda akan diblokir dan dilaporkan sebagai spam!!")
 
         @tgbot.on(events.NewMessage(incoming=True,
@@ -1048,7 +1048,6 @@ Voice chat group menu untuk [{user.first_name}](tg://user?id={user.id})
             else:
                 reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
 
         @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"block")))
         async def on_pm_click(event):
