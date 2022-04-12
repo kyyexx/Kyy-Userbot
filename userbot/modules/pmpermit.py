@@ -11,7 +11,6 @@
 
 from sqlalchemy.exc import IntegrityError
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
-from telethon.tl.functions.messages import ReportSpamRequest
 from telethon.tl.types import User
 from telethon import events
 from userbot.utils import edit_or_reply, edit_delete, kyy_cmd
@@ -21,12 +20,8 @@ from userbot import (
     BOTLOG,
     BOTLOG_CHATID,
     CMD_HELP,
-    COUNT_PM,
-    LASTMSG,
-    LOGS,
     PM_AUTO_BAN,
     owner,
-    PMPERMIT_TEXT,
     bot,
 )
 
@@ -127,7 +122,6 @@ async def do_pm_permit_action(chat_id, event):
             return
     # inline pmpermit menu
     mybot = BOT_USERNAME
-    MSG = DEF_UNAPPROVED_MSG
     tele = await bot.inline_query(mybot, "pmpermit")
     r = await tele[0].click(event.chat_id, hide_via=True)
     PM_WARNS[chat_id] += 1
