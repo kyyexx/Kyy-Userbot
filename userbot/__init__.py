@@ -1049,6 +1049,7 @@ Voice chat group menu untuk [{user.first_name}](tg://user?id={user.id})
                 reply_pop_up_alert = f"❌ DISCLAIMER ❌\n\nAnda Tidak Mempunyai Hak Untuk Menekan Tombol Button Ini"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
+
         @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"block")))
         async def on_pm_click(event):
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
