@@ -742,8 +742,8 @@ with bot:
                     text=TELEBT,
                     buttons=[
                         [
-                            Button.inline("Terima PM", data="setuju"),
-                            Button.inline("Tolak PM", data="block"),
+                            Button.inline("ᴛᴇʀɪᴍᴀ ᴘᴍ", data="setuju"),
+                            Button.inline("ᴛᴏʟᴀᴋ ᴘᴍ", data="block"),
                         ],
                     ],
                 )
